@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Geometry Knash</title>
+  <link rel="stylesheet" href="knash.css">
+</head>
+
+<body>
+  <div id="startScreen">
+    <h1>Geometry Knash</h1>
+    <p>Dette er Geometry Knash, der du må trykke på SPACE for å hoppe unda hinderet. Spillet vil gå fortere og fortere.
+    </p>
+    <button onclick="startGame()">Start Geometry Knash</button>
+  </div>
+  <canvas id="gameCanvas" width="600" height="400" style="display: none;"></canvas>
+  <audio id="gameover" preload="auto">
+    <source src="gameover.mp3" type="audio/mpeg">
+  </audio>
+  <script src="knash.js">
+  </script>
+</body>
+
+</html>
