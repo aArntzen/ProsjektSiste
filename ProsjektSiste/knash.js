@@ -15,11 +15,16 @@ function init() {
 
     obstacle = {
         x: canvas.width - 40,
-        y: canvas.height - 80,
+        y: canvas.height - 60,
         width: 40,
-        height: 80,
+        height: getRandomHeight(),
         speed: 10
     };
+}
+
+function getRandomHeight() {
+
+    return Math.floor(Math.random() * 41) + 20;
 }
 
 function drawCharacter() {
@@ -29,19 +34,18 @@ function drawCharacter() {
 
 function drawObstacle() {
     ctx.fillStyle = "black";
-    ctx.fillRect(obstacle.x, obstacle.y, obstacle.width, obstacle.height);
+    ctx.fillRect(obstacle.x, canvas.height - obstacle.height, obstacle.width, obstacle.height);
 }
 
 function jump() {
     if (!character.jumping) {
-        character.velocityY = -14;
+        character.velocityY = -12;
         character.jumping = true;
-        obstacle.speed += 1;
     }
 }
 
 function update() {
-    character.velocityY += 0.8;
+    character.velocityY += 0.5;
     character.y += character.velocityY;
 
     if (character.y > canvas.height - character.height) {
@@ -52,13 +56,14 @@ function update() {
     obstacle.x -= obstacle.speed;
     if (obstacle.x + obstacle.width < 0) {
         obstacle.x = canvas.width;
+        obstacle.height = getRandomHeight();
     }
 
     if (
         character.x < obstacle.x + obstacle.width &&
         character.x + character.width > obstacle.x &&
-        character.y < obstacle.y + obstacle.height &&
-        character.y + character.height > obstacle.y
+        character.y < canvas.height - obstacle.height + obstacle.height &&
+        character.y + character.height > canvas.height - obstacle.height
     ) {
         gameoverSound.currentTime = 0;
         gameoverSound.play();
