@@ -2,11 +2,15 @@ const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 const gameoverSound = document.getElementById("gameover");
 const jumpCounter = document.getElementById("jumpCounter");
+const highScoreDisplay = document.getElementById("highScore");
 
 let character, obstacle;
 let jumpCount = 0;
+let highScore = localStorage.getItem("highScore") || 0;
 
-function init() {
+highScoreDisplay.textContent = `High Score: ${highScore}`;
+
+async function init() {
     character = {
         x: 50,
         y: canvas.height - 30,
@@ -26,6 +30,17 @@ function init() {
 
     jumpCount = 0;
     updateJumpCounter();
+}
+
+async function startGame() {
+    document.getElementById("startScreen").style.display = "none";
+    canvas.style.display = "block";
+    jumpCounter.style.display = "block";
+    highScoreDisplay.style.display = "block";
+
+    await init();
+
+    update();
 }
 
 function getRandomHeight() {
@@ -52,7 +67,15 @@ function jump() {
 }
 
 function updateJumpCounter() {
-    jumpCounter.textContent = `Score: ${jumpCount}`;
+    jumpCounter.textContent = `SCORE: ${jumpCount}`;
+}
+
+function updateHighScore() {
+    if (jumpCount > highScore) {
+        highScore = jumpCount;
+        localStorage.setItem("highScore", highScore);
+        highScoreDisplay.textContent = `High Score: ${highScore}`;
+    }
 }
 
 function update() {
@@ -79,6 +102,7 @@ function update() {
         gameoverSound.currentTime = 0;
         gameoverSound.play();
         alert("Game Over, Du tapte. Start på nytt:");
+        updateHighScore();
         resetGame();
         return;
     }
@@ -92,14 +116,6 @@ function update() {
 }
 
 function resetGame() {
-    init();
-    update();
-}
-
-function startGame() {
-    document.getElementById("startScreen").style.display = "none";
-    canvas.style.display = "block";
-    jumpCounter.style.display = "block";
     init();
     update();
 }
