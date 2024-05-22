@@ -1,7 +1,10 @@
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 const gameoverSound = document.getElementById("gameover");
+const jumpCounter = document.getElementById("jumpCounter");
+
 let character, obstacle;
+let jumpCount = 0;
 
 function init() {
     character = {
@@ -20,10 +23,12 @@ function init() {
         height: getRandomHeight(),
         speed: 10
     };
+
+    jumpCount = 0;
+    updateJumpCounter();
 }
 
 function getRandomHeight() {
-
     return Math.floor(Math.random() * 41) + 20;
 }
 
@@ -39,9 +44,15 @@ function drawObstacle() {
 
 function jump() {
     if (!character.jumping) {
-        character.velocityY = -12;
+        character.velocityY = -10;
         character.jumping = true;
+        jumpCount++;
+        updateJumpCounter();
     }
+}
+
+function updateJumpCounter() {
+    jumpCounter.textContent = `Score: ${jumpCount}`;
 }
 
 function update() {
@@ -88,6 +99,7 @@ function resetGame() {
 function startGame() {
     document.getElementById("startScreen").style.display = "none";
     canvas.style.display = "block";
+    jumpCounter.style.display = "block";
     init();
     update();
 }
@@ -97,3 +109,4 @@ document.addEventListener("keydown", function (event) {
         jump();
     }
 });
+
