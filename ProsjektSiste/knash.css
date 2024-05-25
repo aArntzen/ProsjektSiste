@@ -20,16 +20,16 @@ canvas {
 }
 
 h1 {
-    color: white;
+    color:blueviolet;
     font-size: 60px;
     font-family: "Jaro", sans-serif;
     text-align: center;
 }
 
-#startScreen {
+#startScreen,#intro,#customizescreen {
     position: absolute;
     background-color: rgba(255, 255, 255, 0.8);
-    padding: 20px;
+    padding: 60px;
     border-radius: 10px;
     text-align: center;
 }
@@ -67,6 +67,7 @@ button{
     background-color: blueviolet;
     color: white;
     font-size: 20px;
+    border-radius: 10px;
 }
 
 .fade-out {

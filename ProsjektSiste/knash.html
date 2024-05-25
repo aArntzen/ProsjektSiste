@@ -5,19 +5,25 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Geometry Knash</title>
-  <link rel="stylesheet" href="knash.css"> 
+  <link rel="stylesheet" href="knash.css">
 </head>
 
 <body>
-  <div id="startScreen">
-    <h1>Geometry Knash</h1>
-    <p>Dette er Geometry Knash, der du må trykke på SPACE for å hoppe unda hinderet. Spillet vil gå fortere og fortere.
+  <div id="intro">
+    <p>Dette er Geometry Knash, der du må trykke på SPACE for å hoppe unda de ulike hinderne.
     </p>
+    <p> Oppdateringsfrekvensen kan påvirkes av å ha flere faner oppe, så vi anbefaler å lukke andre faner.</p>
+    <button onclick="tostartscreen()">Gå videre</button>
+  </div>
+  <div id="startScreen" style="display: none;">
+    <h1>Geometry Knash</h1>
     <button onclick="startGame()">Start Geometry Knash</button>
     <button onclick="customize()">Tilpass Spill</button>
   </div>
   <canvas id="gameCanvas" width="600" height="400" style="display: none;"></canvas>
-  <div id="customizescreen" style="display: none;">Hei og hopp</div>
+  <div id="customizescreen" style="display: none;">
+    <p>Her kan du tilpasse characteren din</p>
+  </div>
   <div class="box">
     <div id="jumpCounter"></div>
     <div id="highScore"></div>
