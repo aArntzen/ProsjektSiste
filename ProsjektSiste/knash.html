@@ -14,8 +14,10 @@
     <p>Dette er Geometry Knash, der du må trykke på SPACE for å hoppe unda hinderet. Spillet vil gå fortere og fortere.
     </p>
     <button onclick="startGame()">Start Geometry Knash</button>
+    <button onclick="customize()">Tilpass Spill</button>
   </div>
   <canvas id="gameCanvas" width="600" height="400" style="display: none;"></canvas>
+  <div id="customizescreen" style="display: none;">Hei og hopp</div>
   <div class="box">
     <div id="jumpCounter"></div>
     <div id="highScore"></div>
@@ -24,6 +26,7 @@
     <source src="gameover.mp3" type="audio/mpeg">s
   </audio>
   <script src="knash.js"></script>
+  <script src="tilpass.js"></script>
 </body>
 
 </html>

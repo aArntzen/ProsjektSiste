@@ -59,3 +59,17 @@ h1 {
     align-items: center;
     justify-content: space-between;
 }
+
+p{
+    font-size: 20px;
+}
+button{
+    background-color: blueviolet;
+    color: white;
+    font-size: 20px;
+}
+
+.fade-out {
+    opacity: 0;
+    transition: opacity 2s ease;
+}
