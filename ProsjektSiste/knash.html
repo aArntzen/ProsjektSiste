@@ -9,6 +9,20 @@
 </head>
 
 <body>
+  <container>
+    <div class="box">
+      <div id="jumpCounter"></div>
+      <h1 id="overskrift">Geometry Knash</h1>
+      <div id="highScore"></div>
+    </div>
+    <canvas id="gameCanvas" width="600" height="400" style="display: none;"></canvas>
+  </container>
+  <div id="info" style="display: none;">
+    <h4>Takk til våre utviklere:</h4>
+    <ul>
+    </ul>
+    <button onclick="tostartscreen()">Tilbake</button>
+  </div>
   <div id="intro">
     <p>Dette er Geometry Knash, der du må trykke på SPACE for å hoppe unda de ulike hinderne.
     </p>
@@ -19,20 +33,23 @@
     <h1>Geometry Knash</h1>
     <button onclick="startGame()">Start Geometry Knash</button>
     <button onclick="customize()">Tilpass Spill</button>
+    <button onclick="toinfo()">Mer Info</button>
   </div>
-  <canvas id="gameCanvas" width="600" height="400" style="display: none;"></canvas>
   <div id="customizescreen" style="display: none;">
-    <p>Her kan du tilpasse characteren din</p>
-  </div>
-  <div class="box">
-    <div id="jumpCounter"></div>
-    <div id="highScore"></div>
+    <p>Her kan du tilpasse fargene i spillet ditt. Husk å velge farger som siller seg fra hverandre!</p>
+    <label for="characterColor">Velg karakterfarge:</label>
+    <input type="color" id="characterColor" value="#0000ff"><br>
+    <label for="obstacleColor">Velg hinderfarge:</label>
+    <input type="color" id="obstacleColor" value="#000000"><br>
+    <label for="canvasColor">Velg bakgrunnsfarge for canvas:</label>
+    <input type="color" id="canvasColor" value="#ffffff"><br>
+    <button onclick="applyCustomization()">Bruk tilpasning</button>
   </div>
   <audio id="gameover" preload="auto">
     <source src="gameover.mp3" type="audio/mpeg">s
   </audio>
   <script src="knash.js"></script>
-  <script src="tilpass.js"></script>
+  <script src="api.js"></script>
 </body>
 
 </html>

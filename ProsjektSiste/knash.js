@@ -1,12 +1,41 @@
+let characterColor, obstacleColor, canvasColor;
+let jumpCount = 0;
+let highScore = localStorage.getItem("highScore") || 0;
+
+const customizescreen = document.getElementById("customizescreen");
+const startScreen = document.getElementById("startScreen");
+const intro = document.getElementById("intro");
+const info = document.getElementById("info")
+
+function tostartscreen() {
+    intro.style.display = "none";
+    startScreen.style.display = "block";
+    info.style.display="none";
+}
+
+function customize() {
+    startScreen.style.display = "none";
+    customizescreen.style.display = "block";
+}
+
+function toinfo() {
+    startScreen.style.display = "none";
+    info.style.display = "block"
+}
+function applyCustomization() {
+    console.log("Apply customization called");
+    characterColor = document.getElementById("characterColor").value;
+    obstacleColor = document.getElementById("obstacleColor").value;
+    canvasColor = document.getElementById("canvasColor").value;
+    customizescreen.style.display = "none";
+    startScreen.style.display = "block";
+}
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 const gameoverSound = document.getElementById("gameover");
 const jumpCounter = document.getElementById("jumpCounter");
 const highScoreDisplay = document.getElementById("highScore");
-
-let character, obstacle;
-let jumpCount = 0;
-let highScore = localStorage.getItem("highScore") || 0;
+const overskrift = document.getElementById("overskrift")
 
 highScoreDisplay.textContent = `High Score: ${highScore}`;
 
@@ -35,8 +64,11 @@ async function init() {
 async function startGame() {
     document.getElementById("startScreen").style.display = "none";
     canvas.style.display = "block";
+    canvas.style.backgroundColor = canvasColor;
     jumpCounter.style.display = "block";
     highScoreDisplay.style.display = "block";
+    overskrift.style.display = "block"
+
 
     await init();
 
@@ -48,12 +80,12 @@ function getRandomHeight() {
 }
 
 function drawCharacter() {
-    ctx.fillStyle = "blue";
+    ctx.fillStyle = characterColor
     ctx.fillRect(character.x, character.y, character.width, character.height);
 }
 
 function drawObstacle() {
-    ctx.fillStyle = "black";
+    ctx.fillStyle = obstacleColor;
     ctx.fillRect(obstacle.x, canvas.height - obstacle.height, obstacle.width, obstacle.height);
 }
 
