@@ -13,6 +13,7 @@
     <div class="box">
       <div id="jumpCounter"></div>
       <h1 id="overskrift">Geometry Knash</h1>
+      <button onclick="tostartscreen()" id="navknapp">Tilbake</button>
       <div id="highScore"></div>
     </div>
     <canvas id="gameCanvas" width="600" height="400" style="display: none;"></canvas>
@@ -24,6 +25,7 @@
     <button onclick="tostartscreen()">Tilbake</button>
   </div>
   <div id="intro">
+    <h1>Geometry Knash</h1>
     <p>Dette er Geometry Knash, der du må trykke på SPACE for å hoppe unda de ulike hinderne.
     </p>
     <p> Oppdateringsfrekvensen kan påvirkes av å ha flere faner oppe, så vi anbefaler å lukke andre faner.</p>
@@ -36,7 +38,7 @@
     <button onclick="toinfo()">Mer Info</button>
   </div>
   <div id="customizescreen" style="display: none;">
-    <p>Her kan du tilpasse fargene i spillet ditt. Husk å velge farger som siller seg fra hverandre!</p>
+    <h4>Her kan du tilpasse fargene i spillet ditt. Husk å velge farger som siller seg fra hverandre!</h4>
     <label for="characterColor">Velg karakterfarge:</label>
     <input type="color" id="characterColor" value="#0000ff"><br>
     <label for="obstacleColor">Velg hinderfarge:</label>

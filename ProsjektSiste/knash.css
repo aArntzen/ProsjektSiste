@@ -1,10 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Jacquard+12&family=Jaro:opsz@6..72&display=swap');
+
 body {
     margin: 0;
     padding: 0;
     overflow: hidden;
     display: flex;
-    flex-direction:column;
+    flex-direction: column;
     justify-content: flex-start;
     align-items: center;
     background-image: url('it.png');
@@ -19,10 +20,12 @@ canvas {
     border: 2px solid black;
     background-color: white;
     margin-top: 20px;
+    margin-left:400px;
 }
 
+
 h1 {
-    color:blueviolet;
+    color: blueviolet;
     font-size: 60px;
     font-family: "Jaro", sans-serif;
     text-align: center;
@@ -30,7 +33,9 @@ h1 {
     padding: 0px;
 }
 
-#startScreen,#intro,#customizescreen,#info {
+#startScreen,
+#intro,
+#customizescreen {
     position: absolute;
     background-color: rgba(255, 255, 255, 0.8);
     padding: 60px;
@@ -39,7 +44,17 @@ h1 {
     margin-top: 300px;
 }
 
-#jumpCounter, #highScore  {
+#info {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 60px;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 100px;
+}
+
+#jumpCounter,
+#highScore {
     display: none;
     font-size: 60px;
     font-family: "Jaro", sans-serif;
@@ -51,31 +66,43 @@ h1 {
     align-items: center;
     justify-content: space-between;
     width: 100vw;
-    padding: 20px; 
+    padding: 20px;
     box-sizing: border-box;
     margin-top: 0px;
 }
-p{
+
+p {
     font-size: 20px;
 }
-button{
+
+button {
     background-color: blueviolet;
     color: white;
     font-size: 20px;
     border-radius: 10px;
 }
 
-#overskrift{
+#overskrift,
+#navknapp {
     display: none;
 }
 
-.container{
+.container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin-top: 0px;
     padding: 0px;
-    height: calc(100vh - 80px);
+    text-align: center;
 
+}
+
+ul,
+label {
+    font-size: 25px;
+}
+
+h4 {
+    font-size: 35px;
 }

@@ -1,6 +1,8 @@
 let characterColor, obstacleColor, canvasColor;
 let jumpCount = 0;
 let highScore = localStorage.getItem("highScore") || 0;
+let gameLoop;
+let gameRunning = false;
 
 const customizescreen = document.getElementById("customizescreen");
 const startScreen = document.getElementById("startScreen");
@@ -10,9 +12,18 @@ const info = document.getElementById("info")
 function tostartscreen() {
     intro.style.display = "none";
     startScreen.style.display = "block";
-    info.style.display="none";
-}
-
+    info.style.display = "none";
+    jumpCounter.style.display = "none";
+    highScoreDisplay.style.display = "none";
+    overskrift.style.display = "none";
+    navknapp.style.display = "none";
+    canvas.style.display = "none";
+    if (gameRunning) {
+        gameRunning = false; 
+        gameoverSound.pause(); 
+        gameoverSound.currentTime = 0; 
+        clearTimeout(alertTimeout);
+}}
 function customize() {
     startScreen.style.display = "none";
     customizescreen.style.display = "block";
@@ -36,6 +47,7 @@ const gameoverSound = document.getElementById("gameover");
 const jumpCounter = document.getElementById("jumpCounter");
 const highScoreDisplay = document.getElementById("highScore");
 const overskrift = document.getElementById("overskrift")
+const navknapp = document.getElementById("navknapp")
 
 highScoreDisplay.textContent = `High Score: ${highScore}`;
 
@@ -68,7 +80,8 @@ async function startGame() {
     jumpCounter.style.display = "block";
     highScoreDisplay.style.display = "block";
     overskrift.style.display = "block"
-
+    navknapp.style.display = "block"
+    gameRunning = true;
 
     await init();
 
@@ -95,6 +108,7 @@ function jump() {
         character.jumping = true;
         jumpCount++;
         updateJumpCounter();
+        obstacle.speed+=0.1;
     }
 }
 
@@ -111,6 +125,9 @@ function updateHighScore() {
 }
 
 function update() {
+    if (!gameRunning) {
+        return;
+    }
     character.velocityY += 0.5;
     character.y += character.velocityY;
 
