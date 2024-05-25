@@ -44,7 +44,7 @@ async function startGame() {
 }
 
 function getRandomHeight() {
-    return Math.floor(Math.random() * 41) + 20;
+    return Math.floor(Math.random() * 41) + 30;
 }
 
 function drawCharacter() {
@@ -96,15 +96,21 @@ function update() {
     if (
         character.x < obstacle.x + obstacle.width &&
         character.x + character.width > obstacle.x &&
-        character.y < canvas.height - obstacle.height + obstacle.height &&
-        character.y + character.height > canvas.height - obstacle.height
+        character.y + character.height > canvas.height - obstacle.height &&
+        character.y < canvas.height
     ) {
-        gameoverSound.currentTime = 0;
-        gameoverSound.play();
-        alert("Game Over, Du tapte. Start på nytt:");
-        updateHighScore();
-        resetGame();
-        return;
+        if (character.y + character.height - character.velocityY <= canvas.height - obstacle.height) {
+            character.y = canvas.height - obstacle.height - character.height;
+            character.velocityY = 0;
+            character.jumping = false;
+        } else {
+            gameoverSound.currentTime = 0;
+            gameoverSound.play();
+            alert("Game Over, Du tapte. Start på nytt:");
+            updateHighScore();
+            resetGame();
+            return;
+        }
     }
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -125,4 +131,3 @@ document.addEventListener("keydown", function (event) {
         jump();
     }
 });
-
