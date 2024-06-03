@@ -80,6 +80,7 @@ button {
     color: white;
     font-size: 20px;
     border-radius: 10px;
+    transition: all 0.1s ease;
 }
 
 #overskrift,
@@ -105,4 +106,8 @@ label {
 
 h4 {
     font-size: 35px;
+}
+
+button:hover {
+    padding: 10px 10px;
 }
